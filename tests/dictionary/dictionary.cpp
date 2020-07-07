@@ -54,3 +54,21 @@ TEST(DictionaryTest, intersectionTest) {
     ASSERT_THAT(d.find_words('i', 'r', 'a', 'n'), ElementsAre(Pointee(Word("grain")), Pointee(Word("rain"))));
     remove("./test-file");
 }
+
+TEST(DictionaryTest, containsTest) {
+    std::ofstream file("./test-file");
+    std::string text = "hello\nhow\nare\nyou\n";
+    file.write(text.c_str(), text.length());
+    file.close();
+
+    Dictionary d = Dictionary("./test-file");
+    ASSERT_TRUE(d.contains(new Word("hello")));
+    ASSERT_TRUE(d.contains(new Word("how")));
+    ASSERT_TRUE(d.contains(new Word("are")));
+    ASSERT_TRUE(d.contains(new Word("you")));
+    ASSERT_TRUE(d.contains(new Word("hello")));
+    ASSERT_FALSE(d.contains(new Word("foo")));
+    ASSERT_FALSE(d.contains(new Word("helo")));
+    ASSERT_FALSE(d.contains(new Word("hoow")));
+    remove("./test-file");
+}

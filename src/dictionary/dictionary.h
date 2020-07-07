@@ -27,5 +27,7 @@ namespace dictionary {
 
         void print_index();
         Word * get_random_word();
+
+        bool contains(Word *word);
     };
 }

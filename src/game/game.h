@@ -1,7 +1,7 @@
 //
 // Created by Varsha Ramesh on 7/6/20.
 //
-/*
+
 #include <dictionary/dictionary.h>
 #include <string>
 
@@ -22,7 +22,7 @@ namespace game {
 
     };
     class Game {
-    private:
+    protected:
         dictionary::Dictionary dict;
     public:
         Game(dictionary::Dictionary& d) : dict(d){}
@@ -36,4 +36,4 @@ namespace game {
         GameResult play(std::string);
     };
 
-}*/
+}

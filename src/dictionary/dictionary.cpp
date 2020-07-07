@@ -68,6 +68,16 @@ std::set<Word*, WordComparator>  Dictionary::find_intersection (std::set<Word*, 
     return result;
 }
 
+bool Dictionary::contains(Word* word) {
+    std::map<char, int> vowels = word->get_vowels();
+    if(vowels.size() == 0) {
+        std::cerr<<"Invalid word "<<word->get()<<" contains no vowels"<<std::endl;
+    }
+    char vowel = vowels.begin()->first;
+    if(word_list[vowel].find(word) == word_list[vowel].end())
+        return false;
+    return true;
+}
 Word * Dictionary::get_random_word()  {
     char rand_char = rand()%26 + 97;
     int count = 0;
